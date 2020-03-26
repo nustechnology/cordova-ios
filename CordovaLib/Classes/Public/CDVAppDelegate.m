@@ -71,6 +71,12 @@
     return YES;
 }
 
+- (void)applicationWillTerminate:(UIApplication *)application{
+    NSISO8601DateFormatter *formater = [[NSISO8601DateFormatter alloc]init];
+    NSString *string = [formater stringFromDate:[NSDate date]];
+    [[NSUserDefaults standardUserDefaults] setObject:string forKey:@"terminalTime"];
+}
+
 // this happens while we are running ( in the background, or from within our own app )
 // only valid if 40x-Info.plist specifies a protocol to handle
 - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey, id> *)options
