@@ -26,6 +26,10 @@ module.exports = {
         // see the file under plugin/ios/console.js
         require('cordova/modulemapper').clobbers('cordova/plugin/ios/console', 'window.console');
 
+        // Attach the wkwebkit utility to window.WkWebView
+        // see the file under plugin/ios/wkwebkit.js
+        require('cordova/modulemapper').clobbers('cordova/plugin/ios/wkwebkit', 'window.WkWebView');
+
         require('cordova/channel').onNativeReady.fire();
     }
 };

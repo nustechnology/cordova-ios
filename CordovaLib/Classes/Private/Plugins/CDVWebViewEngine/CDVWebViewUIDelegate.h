@@ -17,11 +17,12 @@
  under the License.
  */
 
-#import <Foundation/Foundation.h>
+#import <WebKit/WebKit.h>
 
-@interface CDVUserAgentUtil : NSObject
-+ (NSString*)originalUserAgent;
-+ (void)acquireLock:(void (^)(NSInteger lockToken))block;
-+ (void)releaseLock:(NSInteger*)lockToken;
-+ (void)setUserAgent:(NSString*)value lockToken:(NSInteger)lockToken;
+@interface CDVWebViewUIDelegate : NSObject <WKUIDelegate>
+
+@property (nonatomic, copy) NSString* title;
+
+- (instancetype)initWithTitle:(NSString*)title;
+
 @end
