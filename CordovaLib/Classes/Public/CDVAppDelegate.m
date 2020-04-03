@@ -74,7 +74,9 @@
 - (void)applicationWillTerminate:(UIApplication *)application{
     NSISO8601DateFormatter *formater = [[NSISO8601DateFormatter alloc]init];
     NSString *string = [formater stringFromDate:[NSDate date]];
-    [[NSUserDefaults standardUserDefaults] setObject:string forKey:@"terminalTime"];
+    //Fix issue can't parse json
+    NSString *terminalTime = [NSString stringWithFormat:@"[\"%@\"]", string];
+    [[NSUserDefaults standardUserDefaults] setObject: terminalTime forKey:@"terminalTime"];
 }
 
 // this happens while we are running ( in the background, or from within our own app )
